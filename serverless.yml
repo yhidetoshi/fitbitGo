@@ -1,0 +1,50 @@
+service: fitbit
+frameworkVersion: ">=1.48.0"
+
+provider:
+  name: aws
+  stage: dev
+  runtime: go1.x
+  region: ap-northeast-1
+
+
+functions:
+  api:
+    handler: main
+    role: FitbitLambda
+    timeout: 30
+    description: Fetch Fitbit data
+    memorySize: 128
+    environment:
+      TZ: Asia/Tokyo
+      MKRKEY: ${opt:mkrkey}
+      ACCESSTOKEN: ${opt:access_token}
+    events:
+      - schedule: rate(10 minutes)
+
+
+resources:
+  Resources:
+    FitbitLambda:
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: FitbitLambda
+        AssumeRolePolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Principal:
+                Service:
+                  - lambda.amazonaws.com
+              Action: sts:AssumeRole
+        Policies:
+          - PolicyName: FitbitLambda
+            PolicyDocument:
+              Version: '2012-10-17'
+              Statement:
+                - Effect: Allow
+                  Action:
+                    - "logs:CreateLogGroup"
+                    - "logs:CreateLogStream"
+                    - "logs:PutLogEvents"
+                  Resource: "*"

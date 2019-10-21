@@ -12,7 +12,7 @@ var (
 )
 
 const (
-	serviceName = "Fitbit"
+	serviceName = "fitbit"
 	timezone    = "Asia/Tokyo"
 	offset      = 9 * 60 * 60
 )

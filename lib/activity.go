@@ -41,13 +41,14 @@ func DoActivity(accessToken string) {
 
 	body, _ := ioutil.ReadAll(res.Body)
 	bodyStr := string(body)
+	//fmt.Println(bodyStr)
 	jsonBytes := ([]byte)(bodyStr)
 
 	s := &Activities{}
 	if err = json.Unmarshal(jsonBytes, s); err != nil {
 		fmt.Println(err)
 	}
-	fmt.Println(s.ActiveSummary.CaloriesOut, s.ActiveSummary.Steps)
+	//fmt.Println(s.ActiveSummary.CaloriesOut, s.ActiveSummary.Steps)
 
 	PostActiveValuesToMackerel(s.ActiveSummary.Steps, s.ActiveSummary.CaloriesOut, nowPostTime)
 }
