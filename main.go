@@ -8,5 +8,6 @@ import (
 var accessToken = os.Getenv("AccessToken")
 
 func main() {
-	fitbit.Activity(accessToken)
+	//fitbit.Activity(accessToken)
+	fitbit.FetchSleep(accessToken)
 }
