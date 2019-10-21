@@ -1,13 +1,14 @@
 package main
 
 import (
-	"github.com/yhidetoshi/fitbitGo/lib"
 	"os"
+
+	"github.com/yhidetoshi/fitbitGo/lib"
 )
 
 var accessToken = os.Getenv("AccessToken")
 
 func main() {
-	//fitbit.Activity(accessToken)
-	fitbit.FetchSleep(accessToken)
+	fitbit.DoActivity(accessToken)
+	fitbit.DoSleep(accessToken)
 }
