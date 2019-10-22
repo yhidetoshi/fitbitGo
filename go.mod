@@ -5,6 +5,7 @@ go 1.12
 require (
 	github.com/Songmu/make2help v0.1.1 // indirect
 	github.com/aws/aws-lambda-go v1.13.2
+	github.com/aws/aws-sdk-go v1.25.16
 	github.com/hashicorp/go-version v1.2.0 // indirect
 	github.com/mackerelio/mackerel-client-go v0.8.0
 	github.com/mattn/go-colorable v0.1.4 // indirect

@@ -1,13 +1,9 @@
 package main
 
 import (
-	"os"
-
 	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/yhidetoshi/fitbitGo/lib"
 )
-
-var accessToken = os.Getenv("ACCESSTOKEN")
 
 func main() {
 	lambda.Start(Handler)
@@ -15,8 +11,9 @@ func main() {
 
 // Handler lambda
 func Handler() {
+	// func main() {
 
-//func main() {
-	fitbit.DoActivity(accessToken)
-	fitbit.DoSleep(accessToken)
+	accessToken := fitbit.FetchToken()
+	fitbit.DoActivity(*accessToken)
+	fitbit.DoSleep(*accessToken)
 }

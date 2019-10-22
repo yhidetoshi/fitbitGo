@@ -18,7 +18,6 @@ functions:
     environment:
       TZ: Asia/Tokyo
       MKRKEY: ${opt:mkrkey}
-      ACCESSTOKEN: ${opt:access_token}
     events:
       - schedule: rate(10 minutes)
 
@@ -37,6 +36,8 @@ resources:
                 Service:
                   - lambda.amazonaws.com
               Action: sts:AssumeRole
+        ManagedPolicyArns:
+          - arn:aws:iam::aws:policy/AmazonSSMReadOnlyAccess
         Policies:
           - PolicyName: FitbitLambda
             PolicyDocument:
