@@ -1,4 +1,4 @@
-service: fitbit
+service: fitbitapi
 frameworkVersion: ">=1.48.0"
 
 provider:
